@@ -6,47 +6,47 @@ var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Define the music characters
-var musicCharacters = "♩♪♫♬♭♮♯";
+// Define the matrix characters
+var matrixCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}[]|;':\",./<>?`~";
 
-// Define the music columns
+// Define the matrix columns
 var columns = canvas.width / 20;
 
-// An array to store the music drops
+// An array to store the matrix drops
 var drops = [];
 
-// Create the music drops
+// Create the matrix drops
 for (var i = 0; i < columns; i++) {
   drops[i] = Math.floor(Math.random() * canvas.height);
 }
 
-// Draw the music animation
-function drawmusic() {
+// Draw the matrix animation
+function drawMatrix() {
   // Set the canvas background color to black
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  // Set the font and color for the music characters
+  // Set the font and color for the matrix characters
   ctx.font = "15px monospace";
-  ctx.fillStyle = "#FFF";
+  ctx.fillStyle = "#0F0";
   
-  // Loop through the music columns
+  // Loop through the matrix columns
   for (var i = 0; i < columns; i++) {
-    // Get a random music character
-    var musicCharacter = musicCharacters[Math.floor(Math.random() * musicCharacters.length)];
+    // Get a random matrix character
+    var matrixCharacter = matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)];
     
-    // Draw the music character at the current position
-    ctx.fillText(musicCharacter, i * 20, drops[i] * 20);
+    // Draw the matrix character at the current position
+    ctx.fillText(matrixCharacter, i * 20, drops[i] * 20);
     
-    // Move the music drop down by 1
+    // Move the matrix drop down by 1
     drops[i]++;
     
-    // If the music drop is outside the canvas, reset it to the top
+    // If the matrix drop is outside the canvas, reset it to the top
     if (drops[i] * 20 > canvas.height && Math.random() > 0.95) {
       drops[i] = 0;
     }
   }
 }
 
-// Call the drawmusic function every 50 milliseconds
-setInterval(drawmusic, 50);
+// Call the drawMatrix function every 50 milliseconds
+setInterval(drawMatrix, 50);
